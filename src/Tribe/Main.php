@@ -622,6 +622,7 @@ class Tribe__Main {
 		tribe_singleton( 'assets.pipeline', 'Tribe__Assets_Pipeline', [ 'hook' ] );
 		tribe_singleton( 'asset.data', 'Tribe__Asset__Data', [ 'hook' ] );
 		tribe_singleton( 'admin.helpers', 'Tribe__Admin__Helpers' );
+		tribe_singleton( 'admin.views', 'Tribe__Admin__Views' );
 		tribe_singleton( 'tracker', 'Tribe__Tracker', [ 'hook' ] );
 		tribe_singleton( 'chunker', 'Tribe__Meta__Chunker', [ 'set_post_types', 'hook' ] );
 		tribe_singleton( 'cache', 'Tribe__Cache', [ 'hook' ] );
@@ -656,6 +657,8 @@ class Tribe__Main {
 		tribe_register_provider( Tribe\Service_Providers\Widgets::class );
 		tribe_register_provider( Tribe\Service_Providers\Onboarding::class );
 		tribe_register_provider( Tribe\Admin\Notice\Service_Provider::class );
+		tribe_register_provider( Tribe\Service_Providers\Admin_Header::class );
+		tribe_register_provider( Tribe\Service_Providers\Admin_Notifications::class );
 	}
 
 	/**
