@@ -1,8 +1,15 @@
 == Changelog ==
 
-= [TBD] TBD =
+= [4.16.7] 2021-11-04 =
 
-* Feature - Adding Onboarding functionality, featuring `Tours` and `Hints`.
+* Feature - Added Black Friday promo to the General Settings panel. [TCMN-127]
+* Tweak - Update Black Friday banner. [TCMN-126]
+
+= [4.14.6] 2021-10-12 =
+
+* Fix - Ensure all SVG elements have unique IDs to improve accessibility. [TEC-4064]
+* Fix - Ensure the proper domain name is sent to PUE when validating licenses. [TCMN-122]
+* Fix - Correct block use checks around the Classic Editor plugin. [TEC-4099]
 
 = [4.14.5] 2021-09-14 =
 
