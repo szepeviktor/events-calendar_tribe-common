@@ -30,6 +30,7 @@ class Admin_Header extends \tad_DI52_ServiceProvider {
 	private function hooks() {
 		add_action( 'tribe_common_loaded', [ $this, 'add_admin_bar_assets' ] );
 		add_action( 'in_admin_header', [ $this, 'embed_page_header' ] );
+		//add_action( 'all_admin_notices', [ $this, 'embed_page_header' ] );
 	}
 
 	/**
@@ -49,11 +50,14 @@ class Admin_Header extends \tad_DI52_ServiceProvider {
 		/** @var \Tribe__Admin__Views $view */
 		$view = tribe( 'admin.views' );
 
-		$context = [];
+		$context = [
+			'notifications' => tribe( 'admin.notifications' )->get_notifications_ordered(),
+		];
 
 		// Enqueue assets.
 		tribe_asset_enqueue_group( 'tribe-tooltip' );
 		tribe_asset_enqueue_group( 'tribe-admin-header' );
+		tribe_asset_enqueue_group( 'tribe-admin' );
 
 		$view->template( 'admin-header', $context );
 	}
@@ -75,6 +79,7 @@ class Admin_Header extends \tad_DI52_ServiceProvider {
 				'jquery',
 				'tribe-common',
 				'tribe-tooltipster',
+				'tribe-admin-manager',
 			],
 			'wp_enqueue_scripts',
 			[
@@ -97,9 +102,17 @@ class Admin_Header extends \tad_DI52_ServiceProvider {
 			$main,
 			'tribe-tooltip-js',
 			'tooltip.js',
-			[ 'jquery', 'tribe-common' ],
-			[ 'wp_register_script', 'admin_enqueue_scripts' ],
-			[ 'groups' => 'tribe-tooltip' ]
+			[
+				'jquery',
+				'tribe-common'
+			],
+			[
+				'wp_register_script',
+				'admin_enqueue_scripts',
+			],
+			[
+				'groups' => 'tribe-tooltip'
+			]
 		);
 	}
 }

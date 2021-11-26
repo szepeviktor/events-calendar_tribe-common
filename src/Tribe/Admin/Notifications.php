@@ -1,6 +1,9 @@
 <?php
 namespace Tribe\Admin;
 
+use Tribe__Utils__Array as Arr;
+use WP_Error;
+
 /**
  * Class
  *
@@ -165,6 +168,56 @@ class Notifications {
 	}
 
 	/**
+	 * Get the default notification values.
+	 *
+	 * @since TBD
+	 *
+	 * @return array The default notification values.
+	 */
+	public function get_notifications_ordered( $order = 'asc' ) {
+		$notifications = $this->get_notifications();
+
+		//usort( $notifications, [ $this, "sort_by_time_{ $order }"] );
+
+		usort( $notifications, function( $a, $b ) {
+			return ( $a['date'] > $b['date'] ) ? -1 : 1;
+		} );
+
+		return $notifications;
+	}
+
+	/**
+	 * Sort the notifications by time.
+	 *
+	 * @since TBD
+	 *
+	 * @param array $a The first notification.
+	 * @param array $b The second notification.
+	 *
+	 * @return int
+	 */
+	public function sort_by_time_asc( $a = [], $b = [] ) {
+		if ( empty( $a['date'] ) || empty( $b['date'] ) ) {
+			return 0;
+		}
+
+		return $a['date'] - $b['date'];
+	}
+
+	/**
+	 * Sort the notifications by time descending.
+	 *
+	 * @return int
+	 */
+	public function sort_by_time_desc( $a = [], $b = [] ) {
+		if ( empty( $a['date'] ) || empty( $b['date'] ) ) {
+			return 0;
+		}
+
+		return $b['date'] - $a['date'];
+	}
+
+	/**
 	 * The notification defaults.
 	 *
 	 * @since TBD
@@ -252,5 +305,25 @@ class Notifications {
 	public function mark_all_as_read() {
 		// get_notifications()
 		// mark_as_read()
+	}
+
+	/**
+	 * Filters the admin manager request to handle notification actions.
+	 *
+	 * @since TBD
+	 *
+	 * @param string|\WP_Error $render_response The render response HTML content or WP_Error with list of errors.
+	 * @param array            $vars            The request variables.
+	 *
+	 * @return string $html The response with the HTML of the form, depending on the call.
+	 */
+	public function filter_admin_manager_request( $render_response, $vars ) {
+		$html = '';
+
+		if ( 'tribe_admin_notification_mark_read' === Arr::get( $vars, 'request', '' ) ) {
+			$html = 'MARCAMOS COMO LEIDA CHINWENNNNNN';
+		}
+
+		return $html;
 	}
 }

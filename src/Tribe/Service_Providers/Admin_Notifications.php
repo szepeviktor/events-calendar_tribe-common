@@ -34,6 +34,7 @@ class Admin_Notifications extends \tad_DI52_ServiceProvider {
 	private function hooks() {
 		//add_action( 'tribe_common_loaded', [ $this, 'add_admin_bar_assets' ] );
 		//add_action( 'in_admin_header', [ $this, 'embed_page_header' ] );
-	}
 
+		add_filter( 'tribe_admin_manager_request', tribe_callback( 'admin.notifications', 'filter_admin_manager_request' ), 10, 2 );
+	}
 }
