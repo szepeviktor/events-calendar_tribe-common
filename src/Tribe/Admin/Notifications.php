@@ -320,8 +320,20 @@ class Notifications {
 	public function filter_admin_manager_request( $render_response, $vars ) {
 		$html = '';
 
+
 		if ( 'tribe_admin_notification_mark_read' === Arr::get( $vars, 'request', '' ) ) {
-			$html = 'MARCAMOS COMO LEIDA CHINWENNNNNN';
+
+			$notification_id = Arr::get( $vars, 'notification_id', '' );
+			$view            = tribe( 'admin.views' );
+			$notification    = $this->get_notification( $notification_id );
+
+			$this->mark_as_read( $notification_id );
+
+			$html = $view->template(
+				'admin-header/sidebar/notifications/notification',
+				[ 'notification' => $notification ],
+				false
+			);
 		}
 
 		return $html;
