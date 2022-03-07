@@ -275,6 +275,7 @@ class Tribe__Ajax__Dropdown {
 		if ( has_filter( $filter ) ) {
 			$data = apply_filters( $filter, [], $args->search, $args->page, $args->args, $args->source );
 		} else {
+		  	unset($args->action);
 			$data = call_user_func_array( [ $this, $args->source ], (array) $args );
 		}
 
