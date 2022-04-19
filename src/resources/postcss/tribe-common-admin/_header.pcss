@@ -1,0 +1,74 @@
+/*
+ * Header CSS
+ * -------------------------------------------------------------
+ * This file includes styles for the Header feature.
+ */
+
+.tribe-admin__layout {
+	margin: 0;
+	padding: 0;
+}
+
+body.post-type-tribe_events .wrap {
+	padding: 0 20px;
+}
+
+body.post-type-tribe_events #wpcontent {
+	padding: 0;
+}
+
+body.post-type-tribe_events #wpbody-content {
+	margin-top: 60px;
+}
+
+.folded .tribe-admin__header {
+	width: calc(100% - 36px);
+}
+
+.tribe-admin__header {
+	background: #fff;
+	box-sizing: border-box;
+	padding: 0;
+	position: fixed;
+	width: calc(100% - 160px);
+	top: 32px;
+	z-index: 1001;
+}
+
+.tribe-admin__header-content {
+	display: flex;
+	align-items: center;
+	min-height: 60px;
+
+	button {
+		background: transparent;
+		border: 0;
+		cursor: pointer;
+	}
+}
+
+.tribe-admin__header-sidebar {
+	box-sizing: border-box;
+	transition: all .35s;
+	background: #f0f0f0;
+
+	height: calc(100vh - 92px);
+	top: 92px;
+	width: 400px;
+	position: fixed;
+	right: -400px;
+	z-index: 1001;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 20px;
+
+	hr {
+		border: 0;
+		border-top: 1px solid #ddd;
+	}
+}
+
+.tribe-admin__header-sidebar--open {
+	right: 0;
+	box-shadow: 0 12px 12px 0 rgba(85,93,102,.3);
+}
