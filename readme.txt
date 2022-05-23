@@ -1,9 +1,5 @@
 == Changelog ==
 
-= TBD =
-
-* Tweak - Add Stellar Discounts tab in Event Add-Ons
-
 = [4.15.0] 2022-05-19 =
 
 * Feature - Introducing new admin pages structure and updating the settings framework to have Settings on multiple pages. [ET-1335]
