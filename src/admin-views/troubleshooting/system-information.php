@@ -5,7 +5,6 @@
  * @since 4.14.2
  *
  */
-
 $support     = Tribe__Support::getInstance();
 $system_info = $support->formattedSupportStats();
 $optin_key = ! empty( get_option( $support::$option_key ) );
